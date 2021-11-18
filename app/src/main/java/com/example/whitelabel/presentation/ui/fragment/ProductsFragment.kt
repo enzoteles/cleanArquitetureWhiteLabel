@@ -1,5 +1,6 @@
 package com.example.whitelabel.presentation.ui.fragment
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.whitelabel.presentation.ui.viewmodel.ProductsViewModel
 import com.example.whitelabel.R
 import com.example.whitelabel.databinding.ProductsFragmentBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ProductsFragment : Fragment() {
 
@@ -30,6 +32,10 @@ class ProductsFragment : Fragment() {
         binding.button.setOnClickListener {
             findNavController().navigate(ProductsFragmentDirections.actionProductsFragmentToAddProductFragment())
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
     }
 
     override fun onDestroyView() {

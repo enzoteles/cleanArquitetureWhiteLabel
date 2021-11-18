@@ -14,7 +14,7 @@
             android:id="@+id/action_productsFragment_to_addProductFragment"
             app:destination="@id/addProductFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/addProductFragment"
         android:name="com.example.whitelabel.presentation.ui.fragment.AddProductFragment"
         android:label="add_product_fragment"
