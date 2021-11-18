@@ -2,8 +2,9 @@ package com.example.whitelabel.domain.usecase
 
 import android.net.Uri
 import com.example.whitelabel.data.ProductRepository
+import javax.inject.Inject
 
-class UploadProductImageUseCaseImpl(
+class UploadProductImageUseCaseImpl @Inject constructor(
     private val productRepository: ProductRepository
 ): UploadProductImageUseCase {
 
