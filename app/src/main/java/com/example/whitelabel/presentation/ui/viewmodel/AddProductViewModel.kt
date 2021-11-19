@@ -34,13 +34,13 @@ class AddProductViewModel @Inject constructor(
         isFormaValid = true
 
         _imageUriErrorResId.value = getDrawableResIdIfNull(imageUri)
-        _descriptionFieldErrorResId.value = getErrorStringResIdIfEmpty(description)
-        _priceFieldErrorResId.value = getErrorStringResIdIfEmpty(price)
+        //_descriptionFieldErrorResId.value = getErrorStringResIdIfEmpty(description)
+        //_priceFieldErrorResId.value = getErrorStringResIdIfEmpty(price)
 
 
         if(isFormaValid){
             try {
-                val product = createProductUseCase(description, price.fromCurrency(), imageUri!!)
+                createProductUseCase(description, price.fromCurrency(), imageUri!!)
             }catch (e: Exception){
                 Log.d("CreateProduct", e.toString())
             }
@@ -51,7 +51,7 @@ class AddProductViewModel @Inject constructor(
         return if(value.isEmpty()){
             isFormaValid = false
             R.string.add_product_field_error
-        }else null
+        }else 0
     }
 
     private fun getDrawableResIdIfNull(value: Uri?): Int{

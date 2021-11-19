@@ -1,19 +1,14 @@
-package com.example.whitelabel.presentation.ui.fragment
+package com.example.whitelabel.presentation.ui.addproduct
 
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.example.whitelabel.presentation.ui.viewmodel.AddProductViewModel
-import com.example.whitelabel.R
 import com.example.whitelabel.databinding.AddProductFragmentBinding
-import com.example.whitelabel.databinding.ProductsFragmentBinding
 import com.example.whitelabel.presentation.utils.CurrencyTextWatcher
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,8 +56,8 @@ class AddProductFragment : BottomSheetDialogFragment() {
         binding.ivProduct.setOnClickListener { chooseImage() }
 
         binding.button.setOnClickListener {
-            val description = binding.inputDescription.toString()
-            val price = binding.inputPrice.toString()
+            val description = binding.inputDescription.text.toString()
+            val price = binding.inputPrice.text.toString()
             viewModel.createProduct(description = description, price = price, imageUri = imageUri)
         }
 
