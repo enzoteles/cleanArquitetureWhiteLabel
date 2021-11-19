@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.whitelabel.R
+import com.example.whitelabel.domain.model.Product
 import com.example.whitelabel.domain.usecase.CreateProductUseCase
 import com.example.whitelabel.presentation.utils.fromCurrency
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +28,9 @@ class AddProductViewModel @Inject constructor(
     private val _priceFieldErrorResId = MutableLiveData<Int>()
     val priceFieldErrorResId:LiveData<Int> = _priceFieldErrorResId
 
+    private var _productItem = MutableLiveData<Product>()
+    val productItem: LiveData<Product> = _productItem
+
     private var isFormaValid = true
 
 
@@ -40,7 +44,8 @@ class AddProductViewModel @Inject constructor(
 
         if(isFormaValid){
             try {
-                createProductUseCase(description, price.fromCurrency(), imageUri!!)
+                val product = createProductUseCase(description, price.fromCurrency(), imageUri!!)
+                _productItem.value = product
             }catch (e: Exception){
                 Log.d("CreateProduct", e.toString())
             }
